@@ -61,12 +61,8 @@ export class CategoryService {
   }
 
   async remove(id: number) {
-    const query = this.categoryRepository.createQueryBuilder('category');
-    try {
-      return await query.delete().where({}).execute();
-    } catch (error) {
-      this.errorHandler.errorHandleException(error);
-    }
-    return `This action removes a #${id} category`;
+    const category = await this.findOne(id);
+    await this.categoryRepository.remove(category);
+    //return `This action removes a #${id} category`;
   }
 }

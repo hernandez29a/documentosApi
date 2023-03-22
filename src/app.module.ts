@@ -9,6 +9,9 @@ import { EnvConfiguration } from './config/env.config';
 import { JoiValidationSchema } from './config/joi.validation';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoryModule } from './category/category.module';
+import { SubCategoryModule } from './sub-category/sub-category.module';
+import { DocumentModule } from './document/document.module';
 
 @Module({
   imports: [
@@ -26,13 +29,16 @@ import { AuthModule } from './auth/auth.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    ProductsModule,
-    CommonModule,
-    FilesModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
+    CommonModule,
     AuthModule,
+    FilesModule,
+    ProductsModule,
+    CategoryModule,
+    SubCategoryModule,
+    DocumentModule,
   ],
   controllers: [],
   providers: [],
